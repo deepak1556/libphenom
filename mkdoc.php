@@ -112,19 +112,13 @@ function process_include($incname, &$docs) {
     'title' => $target, //$page_title,
     'content' => implode('', $md),
     'decl_titles' => $decl_titles,
-    'raw_content' => replace_tag($incfile),
+    'raw_content' => htmlspecialchars($incfile, ENT_QUOTES, 'utf-8'),
   );
 }
 
 function strip_comments($text) {
   $text = preg_replace(',/\*(.*?)\*/,s', '', $text);
   $text = preg_replace(",//[^\n]+,s", '', $text);
-  return $text;
-}
-
-function replace_tag($text) {
-  $text = preg_replace('/</', '&lt;', $text);
-  $text = preg_replace('/>/', '&gt;', $text);
   return $text;
 }
 

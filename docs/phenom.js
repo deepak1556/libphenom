@@ -194,12 +194,7 @@ function show_header(doc) {
 
   var code = $('<pre/>');
   code.append(
-      $('<code/>').html(prettyPrintOne(
-	  doc.raw_content.replace(/[<>]/g, function(m) {
-	      return {
-		  "<" : "&lt;",
-		  ">" : "&gt;"
-	      }[m]}),'c'))
+      $('<code/>').html(prettyPrintOne(doc.raw_content,'c'))
   );
   p.append(code);
 
